@@ -1,0 +1,37 @@
+ALPHABET -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z;
+DIGITS -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+OTHER -> ` | ~ | ! | @ | # | $ | % | ^ | & | * | ( | ) | - | + | = | { | } | [ | ] | \ | : | | | " | < | > | ? | , | . | /;
+
+VARIABLE -> ALPHABET SOMETHING;
+SOMETHING -> ALPHABET | DIGITS | OTHER | SOMETHING SOMETHING;
+NUMBER -> DIGITS | DIGITS NUMBER;
+S -> S S | IF | PRINT;
+PRINT -> print BRACKET;
+BRACKET -> ( VARIABLE ) | ( STRING ) | VALUE;
+ARITMETIK -> + | - | * | / | / / | % | * *;
+OPERATIONBOOL -> and | or | < | > | < = | > = | ! =;
+BREAK -> break;
+BOOLEAN -> True | False;
+
+IF -> if CONDITION : S | IF ELIF | IF BREAK | IF CONTINUE; 
+ELIF -> elif CONDITION | ELIF ELIF | ELIF ELSE;
+ELSE -> else : S;
+CONDITION -> ( BOOLEAN ) | BOOL;
+
+STRING -> " SOMETHING ";
+
+FUNCTION -> def;
+RETURN -> return; 
+NONE -> None;
+CONTINUE -> Continue;
+
+FOR -> for VARIABLE in STRING : S | for VARIABLE in RANGE : S;
+RANGE -> range BRACKETFOR;
+BRACKETFOR -> VARIABLE | number | number , number | number , number , number;
+WHILE -> while CONDITION : S
+
+FROM -> from VARIABLE IMPORT;
+IMPORT -> import VARIABLE as VARIABLE | import VARIABLE;
+CLASS -> class VARIABLE :; 
+
+COMMENT -> " " " SOMETHING """ | ' ' ' SOMETHING ' ' '
