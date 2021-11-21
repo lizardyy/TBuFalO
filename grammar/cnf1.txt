@@ -1,106 +1,125 @@
+VARIABLE -> VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
 STATEMENTS -> STATEMENTS STATEMENT | COMPOUNDSTATEMENT
 Z8 -> newline
 SIMPLESTATMENTS -> SIMPLESTATEMENT Z8
 COMPOUNDSTATEMENT -> DEF | IF | CLASS | FOR | WHILE | WITH
-SIMPLESTATEMENT -> VARIABLE A1 | return EKSPRESION | pass | break | continue | U8 BRACKET | J8 DEF | C8 X1 | B8 Y1
+SIMPLESTATEMENT -> VARIABLE A1 | return EKSPRESION | pass | break | continue | S8 BRACKET | raise | U8 D11 | T8 E11 | J8 R1 | J8 VARIABLE | K8 Q1
 A1 -> ASSIGN VARVAL
 Y8 -> =
 ASSIGN -> Y8 | ARITMETIK Y8
-VARVAL -> VARVAL B1 | X8 C1 | VARIABLE Digits | VARIABLE Alphabetsnumber | True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
+VARVAL -> VARVAL B1 | X8 C1 | VARIABLE Alphabets | VARIABLE Digits | True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1 | U8 D1 | T8 E1 | STRING F1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | number Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 B1 -> ARITMETIK VARVAL
 X8 -> (
 W8 -> )
 C1 -> VARVAL W8
 Alphabets -> a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
 Digits -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-VARIABLE -> VARIABLE Digits | VARIABLE Alphabetsnumber | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
-U8 -> print
-PRINT -> U8 BRACKET
-BRACKET -> X8 D1 | X8 E1 | VARVAL B1 | X8 C1 | VARIABLE Digits | VARIABLE Alphabetsnumber | True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARVAL B1 | X8 C1 | VARIABLE Digits | VARIABLE Alphabetsnumber | True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
-D1 -> VARIABLE W8
-E1 -> STRING W8
+number -> number Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+string -> string string | number Digits | VARIABLE Alphabets | VARIABLE Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
+U8 -> "
+STRING -> U8 D1 | T8 E1 | STRING F1
+D1 -> string U8
+T8 -> '
+E1 -> string T8
+F1 -> ARITMETIK STRING
+S8 -> print
+PRINT -> S8 BRACKET
+BRACKET -> X8 G1 | X8 H1 | number Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | VARVAL B1 | X8 C1 | VARIABLE Alphabets | VARIABLE Digits | True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1 | U8 D1 | T8 E1 | STRING F1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | number Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | VARVAL B1 | X8 C1 | VARIABLE Alphabets | VARIABLE Digits | True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1 | U8 D1 | T8 E1 | STRING F1 | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | number Digits | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+G1 -> VARIABLE W8
+H1 -> STRING W8
 ARITMETIK -> + | - | * | / | ARITMETIK ARITMETIK | % | ARITMETIK ARITMETIK
-RELATION -> and | or | < | > | RELATION Y8 | RELATION Y8 | T8 Y8 | Y8 Y8
-T8 -> !
-BOOLEAN -> True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1
-F1 -> RELATION BOOLEAN
-S8 -> not
-G1 -> RELATION VARVAL
-R8 -> if
-Q8 -> :
-IF -> R8 H1 | IF ELIF
-H1 -> CONDITION H2
-H2 -> Q8 BLOCK
-P8 -> elif
-ELIF -> P8 I1 | P8 J1
-I1 -> CONDITION I2
-I2 -> Q8 I3
-I3 -> BLOCK ELIF
-J1 -> CONDITION J2
-J2 -> Q8 J3
-J3 -> BLOCK ELSE
-O8 -> else
-ELSE -> O8 K1
-K1 -> Q8 BLOCK
-CONDITION -> X8 L1 | X8 M1 | True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1
-L1 -> BOOLEAN W8
-M1 -> BOOL W8
+RELATION -> and | or | < | > | RELATION Y8 | RELATION Y8 | R8 Y8 | Y8 Y8
+R8 -> !
+BOOLEAN -> True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1
+I1 -> RELATION BOOLEAN
+Q8 -> not
+J1 -> RELATION VARVAL
+P8 -> if
+O8 -> :
+IF -> P8 K1 | IF ELIF
+K1 -> CONDITION K2
+K2 -> O8 BLOCK
+N8 -> elif
+ELIF -> N8 L1 | N8 M1
+L1 -> CONDITION L2
+L2 -> O8 L3
+L3 -> BLOCK ELIF
+M1 -> CONDITION M2
+M2 -> O8 M3
+M3 -> BLOCK ELSE
+M8 -> else
+ELSE -> M8 N1
+N1 -> O8 BLOCK
+CONDITION -> X8 O1 | X8 P1 | True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1
+O1 -> BOOLEAN W8
+P1 -> BOOL W8
 BLOCK -> Z8 STATEMENTS
-N8 -> with
-WITH -> N8 BLOCKIMPORTSTATEMENT
-M8 -> from
-IMPORTFROM -> M8 N1
-N1 -> VARIABLE IMPORT
-L8 -> import
-K8 -> as
-IMPORT -> L8 O1 | L8 VARIABLE
-O1 -> VARIABLE O2
-O2 -> K8 VARIABLE
-J8 -> raise
-RAISE -> J8 DEF
+L8 -> with
+WITH -> L8 BLOCK
+K8 -> from
+IMPORTFROM -> K8 Q1
+Q1 -> VARIABLE IMPORT
+J8 -> import
+I8 -> as
+IMPORT -> J8 R1 | J8 VARIABLE
+R1 -> VARIABLE R2
+R2 -> I8 VARIABLE
+RAISE -> raise
+H8 -> def
+DEF -> H8 S1 | H8 T1
+S1 -> VARIABLE S2
+S2 -> X8 S3
+S3 -> PARAM S4
+S4 -> W8 S5
+S5 -> O8 BLOCK
+T1 -> VARIABLE T2
+T2 -> X8 T3
+T3 -> W8 T4
+T4 -> O8 BLOCK
+G8 -> ,
+PARAM -> PARAM U1 | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
+U1 -> G8 VARIABLE
 RETURN -> return VARIABLE | return | return number
 NONE -> None
-I8 -> for
-H8 -> in
-FOR -> I8 P1 | I8 Q1
-P1 -> VARIABLE P2
-P2 -> H8 P3
-P3 -> STRING P4
-P4 -> Q8 BLOCK
-Q1 -> VARIABLE Q2
-Q2 -> H8 Q3
-Q3 -> RANGE Q4
-Q4 -> Q8 BLOCK
-G8 -> range
-RANGE -> G8 R1
-R1 -> X8 R2
-R2 -> BRACKETFOR W8
-F8 -> ,
-BRACKETFOR -> number S1 | number T1 | VARIABLE Digits | VARIABLE Alphabetsnumber | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
-S1 -> F8 number
-T1 -> F8 T2
-T2 -> number T3
-T3 -> F8 number
-E8 -> while
-WHILE -> E8 U1
-U1 -> CONDITION U2
-U2 -> Q8 BLOCK
-D8 -> class
-CLASS -> D8 W1
+F8 -> for
+E8 -> in
+FOR -> F8 W1 | F8 X1
 W1 -> VARIABLE W2
-W2 -> Q8 BLOCK
-C8 -> "
-COMMENT -> C8 X1 | B8 Y1
-X1 -> C8 X2
-X2 -> C8 X3
-X3 -> VARIABLE X4
-X4 -> C8 X5
-X5 -> C8 C8
-B8 -> '
-Y1 -> B8 Y2
-Y2 -> B8 Y3
-Y3 -> VARIABLE Y4
-Y4 -> B8 Y5
-Y5 -> B8 B8
+W2 -> E8 W3
+W3 -> STRING W4
+W4 -> O8 BLOCK
+X1 -> VARIABLE X2
+X2 -> E8 X3
+X3 -> RANGE X4
+X4 -> O8 BLOCK
+D8 -> range
+RANGE -> D8 Y1
+Y1 -> X8 Y2
+Y2 -> BRACKETFOR W8
+BRACKETFOR -> number Z1 | number A11 | VARIABLE Alphabets | VARIABLE Digits | number Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+Z1 -> G8 number
+A11 -> G8 A12
+A12 -> number A13
+A13 -> G8 number
+C8 -> while
+WHILE -> C8 B11
+B11 -> CONDITION B12
+B12 -> O8 BLOCK
+B8 -> class
+CLASS -> B8 C11
+C11 -> VARIABLE C12
+C12 -> O8 BLOCK
+COMMENT -> U8 D11 | T8 E11
+D11 -> U8 D12
+D12 -> U8 D13
+D13 -> VARIABLE D14
+D14 -> U8 D15
+D15 -> U8 U8
+E11 -> T8 E12
+E12 -> T8 E13
+E13 -> VARIABLE E14
+E14 -> T8 E15
+E15 -> T8 T8
 S0 -> STATEMENTS STATEMENT | COMPOUNDSTATEMENT
-VALUE -> VARVAL B1 | X8 C1 | VARIABLE Digits | VARIABLE Alphabetsnumber | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | True | False | BOOLEAN F1 | S8 BOOLEAN | VARVAL G1
+VALUE -> number Digits | VARVAL B1 | X8 C1 | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | VARIABLE Alphabets | VARIABLE Digits | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | True | False | BOOLEAN I1 | Q8 BOOLEAN | VARVAL J1 | U8 D1 | T8 E1 | STRING F1
+IMPORTSTATEMENT -> J8 R1 | J8 VARIABLE | K8 Q1

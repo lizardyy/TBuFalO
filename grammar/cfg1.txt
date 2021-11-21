@@ -16,9 +16,9 @@ VALUE -> number | VARVAL;
 
 Alphabets -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z;
 Digits -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-VARIABLE -> Alphabets | VARIABLE Digits | VARIABLE Alphabets
-number -> Digits | number Digits 
-string -> number | Variable | string string
+VARIABLE -> Alphabets | VARIABLE Digits | VARIABLE Alphabets;
+number -> Digits | number Digits;
+string -> number | VARIABLE | string string;
 
 STRING -> " string " | ' string ' | STRING + STRING;
 
@@ -34,14 +34,14 @@ ELSE -> else : BLOCK;
 CONDITION -> ( BOOLEAN ) | BOOLEAN | ( BOOL ) | BOOL;
 BLOCK -> newline STATEMENTS | SIMPLESTATEMENTS;
 
-WITH -> with BLOCK
+WITH -> with BLOCK;
 
 IMPORTSTATEMENT -> IMPORT | IMPORTFROM;
 IMPORTFROM -> from VARIABLE IMPORT;
 IMPORT -> import VARIABLE as VARIABLE | import VARIABLE;
-RAISE -> raise 
+RAISE -> raise;
 
-DEF -> def VARIABLE ( PARAM ) : BLOCK | def VARIABLE ( ) : BLOCK
+DEF -> def VARIABLE ( PARAM ) : BLOCK | def VARIABLE ( ) : BLOCK;
 PARAM -> VARIABLE | PARAM , VARIABLE; 
 RETURN -> return VARIABLE | return | return number;
 NONE -> None;
