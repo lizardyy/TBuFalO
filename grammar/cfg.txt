@@ -1,37 +1,52 @@
-ALPHABET -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z;
-DIGITS -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-OTHER -> ` | ~ | ! | @ | # | $ | % | ^ | & | * | ( | ) | - | + | = | { | } | [ | ] | \ | : | | | " | < | > | ? | , | . | /;
+Terminals:
++ - * / % variable number string print with ( ) and or not < > = ! break continue True False None if elif else : ' " def from import as class newline for in range while pass raise str int float double , open
 
-VARIABLE -> ALPHABET SOMETHING;
-SOMETHING -> ALPHABET | DIGITS | OTHER | SOMETHING SOMETHING;
-NUMBER -> DIGITS | DIGITS NUMBER;
-S -> S S | IF | PRINT;
+Variables:
+STATEMENTS STATEMENT SIMPLESTATEMENTS COMPUNDSTATEMENT SIMPLESTATEMENT VARIABLE STRING VALUE VARVAL VALO NUMBER PRINT BRACKET ARITMETIK RELATION BOOLEAN BOOL IF ELIF ELSE CONDITION BLOCK IMPORTSTATEMENT IMPORTFROM IMPORT RAISE DEF PARAM RETURN NONE FOR RANGE BRACKETFOR WHILE CLASS COMMENT
+
+Productions:
+STATEMENTS -> STATEMENT | STATEMENTS STATEMENT;
+STATEMENTS -> COMPOUNDSTATEMENT | SIMPLESTATEMENTS;
+SIMPLESTATMENTS -> SIMPLESTATEMENT newline;
+COMPOUNDSTATEMENT -> DEF | IF | CLASS | FOR | WHILE | WITH;
+SIMPLESTATEMENT -> VARIABLE ASSIGN VARVAL | PRINT | return EKSPRESION | IMPORTSTATEMENT | RAISE | pass | break | continue | COMMENT;
+
+ASSIGN -> = | ARITMETIK =;
+VARIABLE -> variable;
+VARVAL -> VARIABLE | VALUE | VARVAL ARITMETIK VARVAL | ( VARVAL ) | BOOLEAN | STRING;
+VALUE -> number | VARVAL;
+
+STRING -> " string " | ' string ' | STRING + STRING;
+
 PRINT -> print BRACKET;
 BRACKET -> ( VARIABLE ) | ( STRING ) | VALUE;
-ARITMETIK -> + | - | * | / | / / | % | * *;
-OPERATIONBOOL -> and | or | < | > | < = | > = | ! =;
-BREAK -> break;
-BOOLEAN -> True | False;
+ARITMETIK -> + | - | * | / | / / | % | * *; 
+RELATION -> and | or | < | > | < = | > = | ! = | = =;
+BOOLEAN -> True | False | BOOLEAN RELATION BOOLEAN | not BOOLEAN | VARVAL RELATION VARVAL;
 
-IF -> if CONDITION : S | IF ELIF | IF BREAK | IF CONTINUE; 
-ELIF -> elif CONDITION | ELIF ELIF | ELIF ELSE;
-ELSE -> else : S;
-CONDITION -> ( BOOLEAN ) | BOOL;
+IF -> if CONDITION : BLOCK | IF ELIF;
+ELIF -> elif CONDITION : BLOCK ELIF | elif CONDITION : BLOCK ELSE;
+ELSE -> else : BLOCK;
+CONDITION -> ( BOOLEAN ) | BOOLEAN | ( BOOL ) | BOOL;
+BLOCK -> newline STATEMENTS | SIMPLESTATEMENTS;
 
-STRING -> " SOMETHING ";
+WITH -> with BLOCK
 
-FUNCTION -> def;
-RETURN -> return; 
-NONE -> None;
-CONTINUE -> Continue;
-
-FOR -> for VARIABLE in STRING : S | for VARIABLE in RANGE : S;
-RANGE -> range BRACKETFOR;
-BRACKETFOR -> VARIABLE | number | number , number | number , number , number;
-WHILE -> while CONDITION : S
-
-FROM -> from VARIABLE IMPORT;
+IMPORTSTATEMENT -> IMPORT | IMPORTFROM;
+IMPORTFROM -> from VARIABLE IMPORT;
 IMPORT -> import VARIABLE as VARIABLE | import VARIABLE;
-CLASS -> class VARIABLE :; 
+RAISE -> raise 
 
-COMMENT -> " " " SOMETHING """ | ' ' ' SOMETHING ' ' '
+DEF -> def VARIABLE ( PARAM ) : BLOCK | def VARIABLE ( ) : BLOCK
+PARAM -> VARIABLE | PARAM , VARIABLE; 
+RETURN -> return VARIABLE | return | return number;
+NONE -> None;
+
+FOR -> for VARIABLE in STRING : BLOCK | for VARIABLE in RANGE : BLOCK;
+RANGE -> range ( BRACKETFOR );
+BRACKETFOR -> VARIABLE | number | number , number | number , number , number;
+WHILE -> while CONDITION : BLOCK;
+
+CLASS -> class VARIABLE : BLOCK; 
+
+COMMENT -> " " " VARIABLE " " " | ' ' ' VARIABLE ' ' '
