@@ -11,6 +11,7 @@ lx_rules = [
     (r'-',                              "SUB"),
     (r'\*\*',                           "POW"),     # Power
     (r'\*',                             "MUL"),     # Multiply
+    (r'%',                              "MOD"),
     (r'/',                              "DIV"),
     (r'<=',                             "LTE"),     # Less Than or Equal
     (r'<',                              "LT"),      # Less Than
