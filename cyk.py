@@ -3,7 +3,7 @@ import itertools
 import re
 import time
 
-GRAMMAR_RULES = "./grammar/chowsky"
+GRAMMAR_RULES = "./"
 SENTENCES = input("Masukkan nama file yang ingin diuji: ")
 
 blacklisted = {
