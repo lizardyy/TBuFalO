@@ -1,4 +1,3 @@
-import sys
 import regex as re
 import lexer_rules as rule
 
@@ -62,10 +61,9 @@ if __name__ == "__main__":
         mode = input("Pilih Mode: ")
         if mode == "1":
             filename = input("Nama File: ")
-            file = open(filename)
-            txt = file.read()
-            file.close()
-            print(lx.toString(txt))
+            with open(filename) as file:
+                for line in file:
+                    print(lx.toString(line))
         if mode == "2":
             txt = ""
             while(txt != "exit"):
