@@ -37,10 +37,20 @@ class Lexer(object):
     # Convert text ke string, semuanya sudah disubstitusi
     def toString(self, text):
         self.token_parser(text)
-        string = ""
+        string = []
+        tab_num = 0
+        skip = True
         for token in self.tokens:
-            string += token[1] + " "
-        return string
+            if token[1] == "TAB":
+                tab_num += 1
+            else:
+                string.append(token[1])
+            if (token[1] != "TAB" and token[1] != "INLINECOMMENT"):
+                skip = False
+        if skip:
+            return (0, [])
+        else:
+            return (tab_num, string)
 
     # Generator token
     def toToken(self, text):
@@ -63,8 +73,11 @@ if __name__ == "__main__":
             filename = input("Nama File: ")
             with open(filename) as file:
                 for line in file:
-                    print(lx.toString(line))
+                    level, lx_line = lx.toString(line)
+                    if lx_line != []:
+                        print(level, " ".join(lx_line))
         if mode == "2":
+            print("Entering Console Mode, input exit to Quit Mode")
             txt = ""
             while(txt != "exit"):
                 # Ini minta input konsol
