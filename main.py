@@ -108,9 +108,9 @@ if __name__ == "__main__":
     mode = ""
     while(mode != "3"):
         print("Mode Lexer")
-        print("> 1. File")
-        print("> 2. Console (Debug mode)")
-        print("> 3. Exit")
+        print(" 1. File")
+        print(" 2. Console (Debug mode)")
+        print(" 3. Exit")
         mode = input("Pilih Mode: ")
         if mode == "1":
             filename = input("Nama File: ")

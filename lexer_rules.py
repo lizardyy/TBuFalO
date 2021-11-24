@@ -9,11 +9,18 @@ lx_rules = [
     (r'\[',                             "'LSB'"),     # Left Square Brackets
     (r'\]',                             "'RSB'"),     # Right Square Brackets
     (r':',                              "'COLON'"),
+    (r'|',                              "'BOR'"),
+    (r'&',                              "'BAND'"),
+    (r'\^',                             "'BXOR'"),
+    (r'<<',                             "'LSHIFT'"),
+    (r'>>',                             "'RSHIFT'"),
+    (r'~',                              "'BNOT'"),
     (r'\+',                             "'ADD'"),
     (r'-',                              "'SUB'"),
     (r'\*\*',                           "'POW'"),     # Power
     (r'\*',                             "'MUL'"),     # Multiply
     (r'%',                              "'MOD'"),
+    (r'//',                             "'DDIV'"),
     (r'/',                              "'DIV'"),
     (r'<=',                             "'LTE'"),     # Less Than or Equal
     (r'<',                              "'LT'"),      # Less Than
