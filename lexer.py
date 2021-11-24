@@ -16,7 +16,6 @@ class Lexer(object):
         self.tokens = []
         while position < len(text):
             match = None
-            print("While", position)
             for re_rule in self.rules:
                 pattern, tag = re_rule
                 regex = re.compile(pattern)
@@ -37,7 +36,6 @@ class Lexer(object):
             if not match:
                 string, num = rule.check_identifier(text, position)
                 success = num != 0
-                print(success, num)
                 if success:
                     token = (string, "'IDENTIFIER'")
                     self.tokens.append(token)
