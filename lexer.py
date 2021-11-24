@@ -21,10 +21,10 @@ class Lexer(object):
                 match = regex.match(text, position)
                 if match:
                     val = match.group(0)
-                    if tag == "MCOMMENT":
+                    if tag == "'MCOMMENT'":
                         self.multiline_mode = not self.multiline_mode
-                    if tag in ["MCOMMENT", "ICOMMENT"] or self.multiline_mode:
-                        token = (val, "COMMENT")
+                    if tag in ["'MCOMMENT'", "'ICOMMENT'"] or self.multiline_mode:
+                        token = (val, "'COMMENT'")
                         # Tambahin token ke Kumpulan Token
                         self.tokens.append(token)
                     elif tag:
@@ -42,17 +42,17 @@ class Lexer(object):
                 position = match.end(0)
 
     # Convert text ke string, semuanya sudah disubstitusi
-    def toString(self, text):
+    def toList(self, text):
         self.token_parser(text)
         string = []
         tab_num = 0
         skip = True
         for token in self.tokens:
-            if token[1] == "TAB":
+            if token[1] == "'TAB'":
                 tab_num += 1
-            else:
+            elif token[1] != "'COMMENT'":
                 string.append(token[1])
-            if (token[1] != "TAB" and token[1] != "INLINECOMMENT"):
+            if (token[1] != "'TAB'" and token[1] != "'COMMENT'"):
                 skip = False
         if skip:
             return (0, [])
