@@ -1,3 +1,4 @@
+import time
 import lexer as lx
 import lexer_rules as lx_rule
 import cyk_main as cyk
@@ -119,6 +120,7 @@ if __name__ == "__main__":
             line_num = 1
             line_error = 0
             try:
+                start_time = time.time()
                 with open(filename) as file:
                     for line in file:
                         process_line(line, line_num)
@@ -137,8 +139,9 @@ if __name__ == "__main__":
                         # result = CYK.process(lexer_line)
                         # print_result(result, line)
                 print("Final Result:")
-                print("Processed: {} Line".format(line_num - 1))
-                print("Error    : {} Line".format(line_error))
+                print("Processed    : {} Line".format(line_num - 1))
+                print("Error        : {} Line".format(line_error))
+                print("Process time : {:.2f} seconds".format(time.time() - start_time))
             except:
                 print("Cannot open File!")
         if mode == "2":
