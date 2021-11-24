@@ -55,10 +55,10 @@ class Lexer(object):
                 skip = False
                 string.append(token[1])
         if skip:
-            print(f"[{line_num}] Empty Line! Skipping line...")
+            print("[{:0>3d}] Empty Line! Skipping line...".format(line_num))
             return (0, [])
         elif string[0] == "'COMMENT'":
-            print(f"[{line_num}] Error! Program InLine with Comment:", text.strip())
+            print("[{:0>3d}] Error! Program After Comment: {}".format(line_num, text.strip()))
             return (0, [])
         else:
             return (tab_num, string)

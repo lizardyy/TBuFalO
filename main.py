@@ -4,17 +4,21 @@ import cyk_main as cyk
 
 
 def print_result(status, line, line_num):
+    global line_error
     if status == "ACCEPTED":
-        print(f"[{line_num}] Line Accepted")
+        print("[{:0>3d}] Line Accepted".format(line_num))
     elif status == "REJECTED":
-        print(f"[{line_num}] Line Rejected:", line.strip())
+        print("[{:0>3d}] Line Rejected: {}".format(line_num, line.strip()))
+        line_error += 1
     elif status == "SKIP":
-        print(f"[{line_num}] Indentation Error! Skipping Line...")
+        print("[{:0>3d}] Indentation Error! Skipping line...".format(line_num))
+        line_error += 1
     elif status == "IFREJECTED":
-        print(f"[{line_num}] Error! ELIF/ELSE comes before IF!")
+        print("[{:0>3d}] Error! ELIF/ELSE comes before IF!".format(line_num))
+        line_error += 1
     else:
-        print(f"[{line_num}] Unknown Error!")
-
+        print("[{:0>3d}] Unknown Error".format(line_num))
+        line_error += 1
 
 
 def change_if_mode(level, mode):
@@ -73,26 +77,33 @@ if __name__ == "__main__":
     CYK = cyk.CYKAlgo("grammar.txt", True)
 
     filename = input("Nama File: ")
-    with open(filename) as file:
-        tab_level = 0
-        if_mode = [False]
-        line_num = 0
-        for line in file:
-            process_line(line, line_num)
-            line_num += 1
-            # if lexer_line[0] == "'IF'":
-            #     if_mode = True
-            # elif lexer_line[0] == "'ELSE'" and if_mode:
-            #     if_mode = False
-            # elif lexer_line[0] == "'ELSE'":
-            #     print("Error")
-            #     break
-            # elif lexer_line[0] == "'ELIF'" and not if_mode:
-            #     print("Error")
-            #     break
+    tab_level = 0
+    if_mode = [False]
+    line_num = 1
+    line_error = 0
+    try:
+        with open(filename) as file:
+            for line in file:
+                process_line(line, line_num)
+                line_num += 1
+                # if lexer_line[0] == "'IF'":
+                #     if_mode = True
+                # elif lexer_line[0] == "'ELSE'" and if_mode:
+                #     if_mode = False
+                # elif lexer_line[0] == "'ELSE'":
+                #     print("Error")
+                #     break
+                # elif lexer_line[0] == "'ELIF'" and not if_mode:
+                #     print("Error")
+                #     break
 
-            # result = CYK.process(lexer_line)
-            # print_result(result, line)
+                # result = CYK.process(lexer_line)
+                # print_result(result, line)
+        print("Final Result:")
+        print("Processed: {} Line".format(line_num - 1))
+        print("Error    : {} Line".format(line_error))
+    except:
+        print("Cannot open File!")
     # mode = ""
     # while(mode != "3"):
     #     print("Mode Lexer")
