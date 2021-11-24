@@ -16,6 +16,7 @@ class Lexer(object):
         self.tokens = []
         while position < len(text):
             match = None
+            print("While", position)
             for re_rule in self.rules:
                 pattern, tag = re_rule
                 regex = re.compile(pattern)
@@ -34,10 +35,17 @@ class Lexer(object):
                         self.tokens.append(token)
                     break
             if not match:
-                print(f"[{line_num}] Unidentified Syntax at position {position}:")
-                print(text)
-                print(" " * position + "^")
-                break
+                string, num = rule.check_identifier(text, position)
+                success = num != 0
+                print(success, num)
+                if success:
+                    token = (string, "'IDENTIFIER'")
+                    self.tokens.append(token)
+                else:
+                    print(f"[{line_num}] Unidentified Syntax at position {position}:")
+                    print(text)
+                    print(" " * position + "^")
+                position = num
             else:
                 # Posisi regex sekarang di akhir token
                 position = match.end(0)

@@ -60,6 +60,18 @@ lx_rules = [
     (r'in\b',                           "'IN'"),
     (r'raise\b',                        "'RAISE'"),
     (r',',                              "'COMMA'"),
-    (r'\.',                             "'DOT'"),
-    (r'[A-Za-z_][A-Za-z0-9_]*',         "'IDENTIFIER'")
+    (r'\.',                             "'DOT'")
+    # (r'[A-Za-z_][A-Za-z0-9_]*',         "'IDENTIFIER'")
 ]
+
+
+def check_identifier(line, start):
+    VARNAME = ""
+    idx = start
+    if line[idx].isalpha() or line[idx] == "_":
+        VARNAME += line[idx]
+        idx += 1
+        while idx < len(line) and (line[idx].isalnum() or line[idx] == "_"):
+            VARNAME += line[idx]
+            idx += 1
+    return VARNAME, idx
