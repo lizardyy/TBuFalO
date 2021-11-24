@@ -7,6 +7,8 @@ lx_rules = [
     (r'\(',                             "'LP'"),      # Left Parentheses
     (r'\)',                             "'RP'"),      # Right Parentheses
     (r'\[',                             "'LSB'"),     # Left Square Brackets
+    (r'[+-]?([0-9]*[.])?[0-9]+',        "'NUM'"),
+    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r'\]',                             "'RSB'"),     # Right Square Brackets
     (r':',                              "'COLON'"),
     (r'\+',                             "'ADD'"),
@@ -46,8 +48,6 @@ lx_rules = [
     (r'break\b',                        "'BREAK'"),
     (r'in\b',                           "'IN'"),
     (r'raise\b',                        "'RAISE'"),
-    (r'[+-]?([0-9]*[.])?[0-9]+',        "'NUM'"),
-    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r',',                              "'COMMA'"),
     (r'\.',                             "'DOT'"),
     (r'[A-Za-z_][A-Za-z0-9_]*',         "'IDENTIFIER'")
