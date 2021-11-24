@@ -61,11 +61,12 @@ class CYKAlgo(object):
                     second_list = self.table[row_p -
                                              first_len][column_p + first_len]
                     combinations = list_product(first_list, second_list)
-                    if debug:
-                        print(f"Row {row_p}, Col {column_p}\n", first_list, second_list)
                     for rule in self.vars:
                         for comb in combinations:
                             if rule[1:] == comb and rule[0] not in self.table[row_p][column_p]:
+                                if debug:
+                                    print(f"Row {row_p}, Col {column_p}")
+                                    print(f"{rule[0]} -> {rule[1]} {rule[2]}")
                                 self.table[row_p][column_p].append(rule[0])
 
     def process(self, input_list, debug=False):
