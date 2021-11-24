@@ -4,7 +4,7 @@
 
 Program untuk menge-check syntax bahasa python menggunakan Context-Free Grammar dan Algoritma CYK.
 
-Program memanfaatkan regular expression untuk mengubah input menjadi token-token. Token-token tersebut kemudian akan digunakan oleh algoritma CYK untuk menentukan apakah input termasuk dalam grammar.
+Program memanfaatkan NFA dan Regular Expression untuk mengubah input menjadi token-token. Token-token tersebut kemudian akan digunakan oleh algoritma CYK untuk menentukan apakah input termasuk dalam grammar.
 
 ## Requirements
 
