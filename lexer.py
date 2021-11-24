@@ -61,10 +61,11 @@ class Lexer(object):
             if (token[1] != "'TAB'" and token[1] != "'COMMENT'"):
                 skip = False
                 string.append(token[1])
+        print(string)
         if skip:
             print("[{:0>3d}] Empty Line! Skipping line...".format(line_num))
             return (0, [])
-        elif string[0] == "'COMMENT'":
+        elif (self.tokens)[tab_num][1] == "'COMMENT'":
             print("[{:0>3d}] Error! Program After Comment: {}".format(line_num, text.strip()))
             return (0, [])
         else:

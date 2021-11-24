@@ -110,7 +110,7 @@ if __name__ == "__main__":
     while(mode != "3"):
         print("Mode Lexer")
         print(" 1. File")
-        print(" 2. Console (Debug mode)")
+        print(" 2. Console")
         print(" 3. Exit")
         mode = input("Pilih Mode: ")
         if mode == "1":
@@ -150,5 +150,5 @@ if __name__ == "__main__":
             while(txt != "exit"):
                 # Ini minta input konsol
                 txt = input(">>> ")
-                process_line(txt, line_num, True)
+                process_line(txt, line_num)
                 line_num += 1
