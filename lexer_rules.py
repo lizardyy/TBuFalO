@@ -22,6 +22,7 @@ lx_rules = [
     (r'==',                             "'EQ'"),      # Equal
     (r'!=',                             "'NEQ'"),     # Not Equal
     (r'=',                              "'ASSIGN'"),
+    (r'class\b',                        "'CLASS'"),
     (r'True\b',                         "'TRUE'"),
     (r'False\b',                        "'FALSE'"),
     (r'is\b',                           "'IS'"),
