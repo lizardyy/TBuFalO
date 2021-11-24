@@ -15,13 +15,17 @@ lx_rules = [
     (r'<<',                             "'LSHIFT'"),
     (r'>>',                             "'RSHIFT'"),
     (r'~',                              "'BNOT'"),
+    (r'\+=',                            "'ADDASSIGN'"),
+    (r'-=',                             "'SUBASSIGN'"),
+    (r'\/=',                             "'DIVASSIGN'"),
+    (r'\*=',                             "'MULASSIGN'"),
     (r'\+',                             "'ADD'"),
     (r'-',                              "'SUB'"),
     (r'\*\*',                           "'POW'"),     # Power
     (r'\*',                             "'MUL'"),     # Multiply
     (r'%',                              "'MOD'"),
-    (r'//',                             "'DDIV'"),
-    (r'/',                              "'DIV'"),
+    (r'\/\/',                             "'DDIV'"),
+    (r'\/',                              "'DIV'"),
     (r'<=',                             "'LTE'"),     # Less Than or Equal
     (r'<',                              "'LT'"),      # Less Than
     (r'>=',                             "'GTE'"),     # Greater Than or Equal

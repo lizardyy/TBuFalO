@@ -142,7 +142,7 @@ if __name__ == "__main__":
                 print("Processed    : {} Line".format(line_num - 1))
                 print("Error        : {} Line".format(line_error))
                 print("Process time : {:.2f} seconds".format(time.time() - start_time))
-            except:
+            except IOError:
                 print("Cannot open File!")
         if mode == "2":
             print("Entering Console Mode, input exit to Quit Mode")
