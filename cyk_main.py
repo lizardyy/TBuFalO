@@ -12,10 +12,18 @@ def split_grammar(grammar):
     return terminals, variables
 
 
+def print_masuk(term, var):
+    for i in term:
+        if i[0] == 'S':
+            print(i)
+    for i in var:
+        if i[0] == 'S':
+            print(i)
+
+
 def print_table(table):
     print("Tabel CYK")
     for idx, row in enumerate(table):
-        print("Row:", idx)
         print(row)
 
 
@@ -27,38 +35,15 @@ def list_product(l1, l2):
     return product
 
 
-def CYK(input_list, grammar):
-    terminals, variables = split_grammar(grammar)
-    input_len = len(input_list)
-    table = [[[] for _ in range(input_len - i)] for i in range(input_len)]
-
-    for i in range(input_len):
-        for term in terminals:
-            if term[1] == input_list[i]:
-                if term[0] not in table[0][i]:
-                    table[0][i].append(term[0])
-
-    for row_p in range(1, input_len):
-        for column_p in range(input_len - row_p):
-            for first_len in range(1, row_p + 1):
-                first_list = table[first_len - 1][column_p]
-                second_list = table[row_p - first_len][column_p + first_len]
-                combinations = list_product(first_list, second_list)
-                # print(first_list, second_list)
-                for rule in variables:
-                    for comb in combinations:
-                        if rule[1:] == comb and rule[0] not in table[row_p][column_p]:
-                            table[row_p][column_p].append(rule[0])
-
-
 class CYKAlgo(object):
     def __init__(self, source, from_file=False):
         if from_file:
-            self.terms, self.vars = split_grammar(gc.convert_grammar(gc.read_grammar(source)))
+            self.terms, self.vars = split_grammar(
+                gc.convert_grammar(gc.read_grammar(source)))
         else:
             self.terms, self.vars = split_grammar(source)
 
-    def fill_table(self, input_list):
+    def fill_table(self, input_list, debug=False):
         input_len = len(input_list)
         self.table = [[[] for _ in range(input_len - i)]
                       for i in range(input_len)]
@@ -76,18 +61,16 @@ class CYKAlgo(object):
                     second_list = self.table[row_p -
                                              first_len][column_p + first_len]
                     combinations = list_product(first_list, second_list)
-                    # print(first_list, second_list)
+                    if debug:
+                        print(first_list, second_list)
                     for rule in self.vars:
                         for comb in combinations:
                             if rule[1:] == comb and rule[0] not in self.table[row_p][column_p]:
                                 self.table[row_p][column_p].append(rule[0])
-    
+
     def process(self, input_list, debug=False):
-        self.fill_table(input_list)
-        if 'S' in self.table[-1][0]:
-            print("Masuk")
-        elif debug:
-            print("Gak Masuk")
-            print_table(self.table)
+        self.fill_table(input_list, debug)
+        if len(self.table) > 0 and 'S' in self.table[-1][0]:
+            return "ACCEPTED"
         else:
-            print("Gak Masuk")
+            return "REJECTED"

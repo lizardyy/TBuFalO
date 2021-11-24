@@ -1,4 +1,5 @@
 import regex as re
+# import re
 import lexer_rules as rule
 
 
@@ -8,7 +9,7 @@ class Lexer(object):
         self.multiline_mode = False
 
     # Dari text, tiap token masukin ke self.tokens
-    def token_parser(self, text):
+    def token_parser(self, text, line_num):
         # Posisi mulai regex
         position = 0
         # Kumpulan token
@@ -33,7 +34,7 @@ class Lexer(object):
                         self.tokens.append(token)
                     break
             if not match:
-                print(f"Unidentified Syntax at position {position}:")
+                print(f"[{line_num}] Unidentified Syntax at position {position}:")
                 print(text)
                 print(" " * position + "^")
                 break
@@ -42,28 +43,25 @@ class Lexer(object):
                 position = match.end(0)
 
     # Convert text ke string, semuanya sudah disubstitusi
-    def toList(self, text):
-        self.token_parser(text)
+    def toList(self, text, line_num):
+        self.token_parser(text, line_num)
         string = []
         tab_num = 0
         skip = True
         for token in self.tokens:
             if token[1] == "'TAB'":
                 tab_num += 1
-            elif token[1] != "'COMMENT'":
-                string.append(token[1])
             if (token[1] != "'TAB'" and token[1] != "'COMMENT'"):
                 skip = False
+                string.append(token[1])
         if skip:
+            print(f"[{line_num}] Empty Line! Skipping line...")
+            return (0, [])
+        elif string[0] == "'COMMENT'":
+            print(f"[{line_num}] Error! Program InLine with Comment:", text.strip())
             return (0, [])
         else:
             return (tab_num, string)
-
-    # Generator token
-    def toToken(self, text):
-        self.token_parser(text)
-        for i in self.tokens:
-            yield i
 
 
 if __name__ == "__main__":

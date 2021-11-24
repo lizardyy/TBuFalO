@@ -2,7 +2,7 @@ lx_rules = [
     (r'(?<=^( {4})*) {4}',              "'TAB'"),
     (r'[ \n\t]+',                       None),
     (r'\'\'\'',                         "'MCOMMENT'"),
-    (r'\'\'\'',                         "'MCOMMENT'"),
+    (r'\"\"\"',                         "'MCOMMENT'"),
     (r'#.*$',                           "'ICOMMENT'"),
     (r'\(',                             "'LP'"),      # Left Parentheses
     (r'\)',                             "'RP'"),      # Right Parentheses
