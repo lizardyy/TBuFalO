@@ -62,7 +62,7 @@ class CYKAlgo(object):
                                              first_len][column_p + first_len]
                     combinations = list_product(first_list, second_list)
                     if debug:
-                        print(first_list, second_list)
+                        print(f"Row {row_p}, Col {column_p}\n", first_list, second_list)
                     for rule in self.vars:
                         for comb in combinations:
                             if rule[1:] == comb and rule[0] not in self.table[row_p][column_p]:
@@ -70,6 +70,8 @@ class CYKAlgo(object):
 
     def process(self, input_list, debug=False):
         self.fill_table(input_list, debug)
+        if debug:
+            print_table(self.table)
         if len(self.table) > 0 and 'S' in self.table[-1][0]:
             return "ACCEPTED"
         else:
