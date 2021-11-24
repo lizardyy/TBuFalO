@@ -9,7 +9,7 @@ lx_rules = [
     (r'\[',                             "'LSB'"),     # Left Square Brackets
     (r'\]',                             "'RSB'"),     # Right Square Brackets
     (r':',                              "'COLON'"),
-    (r'|',                              "'BOR'"),
+    (r'\|',                             "'BOR'"),
     (r'&',                              "'BAND'"),
     (r'\^',                             "'BXOR'"),
     (r'<<',                             "'LSHIFT'"),
