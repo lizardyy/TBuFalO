@@ -5,6 +5,7 @@ import lexer_rules as rule
 class Lexer(object):
     def __init__(self, rules):
         self.rules = rules
+        self.multiline_mode = False
 
     # Dari text, tiap token masukin ke self.tokens
     def token_parser(self, text):
@@ -20,13 +21,19 @@ class Lexer(object):
                 match = regex.match(text, position)
                 if match:
                     val = match.group(0)
-                    if tag:
+                    if tag == "MCOMMENT":
+                        self.multiline_mode = not self.multiline_mode
+                    if tag in ["MCOMMENT", "ICOMMENT"] or self.multiline_mode:
+                        token = (val, "COMMENT")
+                        # Tambahin token ke Kumpulan Token
+                        self.tokens.append(token)
+                    elif tag:
                         token = (val, tag)
                         # Tambahin token ke Kumpulan Token
                         self.tokens.append(token)
                     break
             if not match:
-                print(f"Syntax Error at position {position}:")
+                print(f"Unidentified Syntax at position {position}:")
                 print(text)
                 print(" " * position + "^")
                 break
@@ -81,6 +88,6 @@ if __name__ == "__main__":
             txt = ""
             while(txt != "exit"):
                 # Ini minta input konsol
-                txt = input("> ")
+                txt = input(">>> ")
                 for i in lx.toToken(txt):
                     print(i)

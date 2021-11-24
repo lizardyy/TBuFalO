@@ -1,4 +1,7 @@
 def do_something(x):
+    """
+    Multiline mode
+    """ a += 30
     if x == 0:
         return 0
     elif x + 4 == 1:

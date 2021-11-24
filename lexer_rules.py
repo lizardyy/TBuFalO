@@ -1,7 +1,9 @@
 lx_rules = [
     (r'(?<=^( {4})*) {4}',              "TAB"),
     (r'[ \n\t]+',                       None),
-    (r'#.*$',                           "INLINECOMMENT"),
+    (r'\"\"\"',                         "MCOMMENT"),
+    (r'\'\'\'',                         "MCOMMENT"),
+    (r'#.*$',                           "ICOMMENT"),
     (r'\(',                             "LP"),      # Left Parentheses
     (r'\)',                             "RP"),      # Right Parentheses
     (r'\[',                             "LSB"),     # Left Square Brackets
