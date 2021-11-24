@@ -22,6 +22,8 @@ lx_rules = [
     (r'==',                             "'EQ'"),      # Equal
     (r'!=',                             "'NEQ'"),     # Not Equal
     (r'=',                              "'ASSIGN'"),
+    (r'[+-]?([0-9]*[.e])?[0-9]+',        "'NUM'"),
+    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r'class\b',                        "'CLASS'"),
     (r'True\b',                         "'TRUE'"),
     (r'False\b',                        "'FALSE'"),
@@ -46,8 +48,6 @@ lx_rules = [
     (r'break\b',                        "'BREAK'"),
     (r'in\b',                           "'IN'"),
     (r'raise\b',                        "'RAISE'"),
-    (r'[+-]?([0-9]*[.])?[0-9]+',        "'NUM'"),
-    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r',',                              "'COMMA'"),
     (r'\.',                             "'DOT'"),
     (r'[A-Za-z_][A-Za-z0-9_]*',         "'IDENTIFIER'")
