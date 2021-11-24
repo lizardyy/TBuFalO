@@ -7,8 +7,6 @@ lx_rules = [
     (r'\(',                             "'LP'"),      # Left Parentheses
     (r'\)',                             "'RP'"),      # Right Parentheses
     (r'\[',                             "'LSB'"),     # Left Square Brackets
-    (r'[+-]?([0-9]*[.])?[0-9]+',        "'NUM'"),
-    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r'\]',                             "'RSB'"),     # Right Square Brackets
     (r':',                              "'COLON'"),
     (r'\+',                             "'ADD'"),
@@ -24,6 +22,8 @@ lx_rules = [
     (r'==',                             "'EQ'"),      # Equal
     (r'!=',                             "'NEQ'"),     # Not Equal
     (r'=',                              "'ASSIGN'"),
+    (r'[+-]?([0-9]*[.])?[0-9]+',        "'NUM'"),
+    (r'([\"\'])(?:(?=(\\?))\2.)*?\1',   "'STR'"),
     (r'class\b',                        "'CLASS'"),
     (r'True\b',                         "'TRUE'"),
     (r'False\b',                        "'FALSE'"),
