@@ -2,7 +2,7 @@ def do_something(x):
     """
     Multiline mode
     """
-    if x == 0:
+    if x == 0;
         return 0
     elif x + 4 == 1:
         if True:

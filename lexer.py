@@ -35,14 +35,15 @@ class Lexer(object):
                     break
             if not match:
                 string, num = rule.check_identifier(text, position)
-                success = num != 0
+                success = num != position
                 if success:
                     token = (string, "'IDENTIFIER'")
                     self.tokens.append(token)
                 else:
-                    print(f"[{line_num}] Unidentified Syntax at position {position}:")
+                    print("[{:0>3d}] Unidentified Syntax at position {}:".format(line_num, position))
                     print(text)
                     print(" " * position + "^")
+                    break
                 position = num
             else:
                 # Posisi regex sekarang di akhir token
