@@ -1,15 +1,20 @@
-def do_something(x):
+
+#  ini inputan benar
+def funcsomething(x):
     """
     Multiline mode
     """
     if x == 0:
+        x += 6
         return 0
-    elif x + 4 == 1:
+    elif x * 5 == 1:
+        x = 44
         if True:
-            return 3
+            return True
         else:
             return 2
-    elif x == 32:
-        return 4
+    elif (x ==5*4):
+        return funcsomething(x + 8)
     else:
-        return 4
+        return (0)
+
