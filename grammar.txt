@@ -1,4 +1,3 @@
-S -> S S
 S -> IFMETHOD
 S -> ELIFMETHOD
 S -> ELSEM
